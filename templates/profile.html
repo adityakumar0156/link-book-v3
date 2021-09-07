@@ -1,0 +1,52 @@
+{% extends 'after_logedin.html'%} {% block title %}Profile-LinkBook{% endblock %} {%block content%}
+
+
+<div class="div1" style="position:relative;height:110px;background-color: rgb(187, 175, 97);">
+    <div class="div2" style="position:absolute;bottom:10px;right:10px;">
+        <a href="/logout" type="button" class="btn btn-warning">Logout</a>
+        <a href="/profile" type="button" class="btn btn-warning">Profile</a>
+    </div>
+    <img src="static/d.png" alt="" width="50px" height="50px" style="position:absolute;top:16px;left:15px;">
+    <span class="" style="font-size:120%;color:white;position:absolute;top:20px;left:64px;"><b>{{email}}</b></span>
+
+</div>
+
+
+<form action="/profile" method="post" style="display:inline-block;margin-left:30px;width:80%;">
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Subject</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter subject" required name="sub">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Description</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter description" required name="desc">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Book</button>
+</form>
+<br><br>
+
+<div class="container">
+
+    {% for i in range(0,data|length) %}
+    <!--Main Loop for printing data-->
+
+    {%if data[i].id==email %}
+
+
+
+    <div class="card my-3 mx-3" style="width: 22rem;float:left;">
+        <div class="card-body" style="width:350px;height:160px;overflow:auto;">
+            <h5 class="card-title">{{data[i].sub}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted"></h6>
+            <p class="card-text">{{data[i].desc}}</p>
+            <a href="/addlink/{{data[i].sub}}" type="button" class="btn btn-success">Open</a>
+            <a href="/deleteb/{{data[i].sno}}" type="button" class="btn btn-danger" style="float:right;">Delete</a>
+            <a href="/updateb/{{data[i].sno}}" type="button" class="btn btn-info">Update</a>
+
+        </div>
+    </div>
+</div>
+{% endif %} {% endfor %} {%endblock%}

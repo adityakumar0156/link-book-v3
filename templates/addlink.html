@@ -1,0 +1,54 @@
+{% extends 'after_logedin.html'%} {% block title %}AddLink-LinkBook{% endblock %} {%block content%}
+
+<div class="div1" style="position:relative;height:120px;background-color: rgb(187, 175, 97);">
+    <div class="div2" style="position:absolute;bottom:10px;right:10px;">
+        <a href="/logout" type="button" class="btn btn-warning">Logout</a>
+        <a href="/profile" type="button" class="btn btn-warning">Profile</a>
+    </div>
+    <img src="../static/d.png" alt="" width="50px" height="50px" style="position:absolute;top:16px;left:15px;">
+    <span class="" style="font-size:120%;color:white;position:absolute;top:20px;left:64px;"><b>{{email}}</b></span>
+    <span class="" style="font-size:120%;color:white;position:absolute;top:45px;left:64px;">&nbsp Book Name : <b>{{sub}}</b></span>
+
+</div>
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Add new links below!</strong> You should check in on some of those fields below.
+</div>
+
+<form action="/addlink/{{sub}}" style="display:inline-block;margin-left:30px;width:80%;" method="post">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Link</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Link of the site" required name="link">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Title</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter content" required name="title">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Content</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter description" required name="content">
+    </div>
+
+    <button type="submit" class="btn btn-primary">AddLink</button>
+</form>
+
+
+<br><br> {% for i in range(0,data|length) %}
+<!--Main Loop for printing data-->
+
+{%if data[i].sub==sub %} {%if data[i].id==email %}
+
+<div class="card my-3 mx-3" style="width: 22rem;float:left;">
+    <div class="card-body" style="width:350px;height:200px;overflow:auto;">
+        <h5 class="card-title">{{data[i].title}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted"></h6>
+        <p class="card-text">{{data[i].content}}</p>
+        <a href="{{data[i].link}}" type="button" class="btn btn-primary btn-success" target="_blank">Open</a>
+        <a href="/deletel/{{data[i].sno}}/{{data[i].sub}}" type="button" class="btn btn-primary btn-danger" style="float:right;">Delete</a>
+        <a href="/updatel/{{data[i].sno}}/{{data[i].sub}}" type="button" class="btn btn-primary btn-info">Update</a>
+
+    </div>
+</div>
+{% endif %} {% endif %} {% endfor %} {%endblock%}

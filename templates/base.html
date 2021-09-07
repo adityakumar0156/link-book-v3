@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="https://media.istockphoto.com/photos/wood-font-plank-font-letter-a-picture-id844485246?s=612x612">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>{%block title%}{%endblock%}</title>
+</head>
+<style>
+    body {
+        margin: 0px;
+        padding: 0px;
+    }
+</style>
+
+<body>
+
+    <div class="div" style="background-color: rgb(21, 36, 85);width:100%;height:150px;position:relative;">
+        <div class="div4" style="position: absolute;left:200px;top:33px;color:white;font-size:180%;">Link Book</div>
+        <div class="div3" style="position:absolute;left:30px;top:25px;"><img src="static/a.png" alt="" width="140px" height="110px"></div>
+        <div class="div2" style="position:absolute;bottom:10px;right:10px;"> <a href="/" type="button" class="btn btn-primary mx-1">Home</a>
+            <a href="/login" type="button" class="btn btn-danger">LogIn</a>
+            <a href="/signin" type="button" class="btn btn-danger">SignIn</a>
+            <br>
+        </div>
+    </div>
+
+    {% if msg.__len__()>0%}
+    <div class="alert alert-primary" role="alert">
+        {{msg}}
+    </div>
+    {%endif%} {% block content %} {% endblock %}
+
+
+
+    <br><br>
+    <div id="footer" style="position:static;bottom:0px;text-align:center; height:40px;background-color:rgb(42, 50, 112);font-size:120%;color:white;padding:10px;width:100%;">
+        Feed Back: aditya5kumar2012@gmail.com
+    </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>
